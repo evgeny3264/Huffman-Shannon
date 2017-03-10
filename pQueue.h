@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _PQUEUE_H
 #define _PQUEUE_H
 

@@ -1,4 +1,4 @@
-#include "shanon.h"
+п»ї#include "shanon.h"
 
 
 hlTable * _buildTable(char *inputString)
@@ -7,13 +7,13 @@ hlTable * _buildTable(char *inputString)
 	hlTable *table = (hlTable *)malloc(sizeof(hlTable));
 	table->first = NULL;
 	table->last = NULL;
-	// Создать массив размер 256(ANSII 256)
+	// РЎРѕР·РґР°С‚СЊ РјР°СЃСЃРёРІ СЂР°Р·РјРµСЂ 256(ANSII 256)
 	int * probability = (int *)malloc(sizeof(int)*256);
 	
-	//Инициализацировать массив
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ
 	init(probability);
 	int cur_max=0;
-	//Индекс массива в соотвестие символу
+	//РРЅРґРµРєСЃ РјР°СЃСЃРёРІР° РІ СЃРѕРѕС‚РІРµСЃС‚РёРµ СЃРёРјРІРѕР»Сѓ
 	for(int i=0; inputString[i]!='\0'; i++){
 		probability[(unsigned char) inputString[i]]++;
 		if(probability[(unsigned char) inputString[i]]> cur_max)
@@ -143,6 +143,6 @@ void _decode(hlTable *table,const char *stringToDecode)
 	}
 	cur=temp->first;
 	}
-	printf("Декодирование\nВходящая строка:%s\nРезултат:%s\n",stringToDecode,res.c_str());
+	printf("Р”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ\nР’С…РѕРґСЏС‰Р°СЏ СЃС‚СЂРѕРєР°:%s\nР РµР·СѓР»С‚Р°С‚:%s\n",stringToDecode,res.c_str());
 	return;
 }

@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <Windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,18 +9,18 @@ int main(void)
 {
 	setlocale(LC_ALL, "Russian");
 	bool flag = true;
-	string sHuffman("Метод Хаффмана");
-	string sShannon("Метод Шеннона-Фано");
+	string sHuffman("РњРµС‚РѕРґ РҐР°С„С„РјР°РЅР°");
+	string sShannon("РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ");
 	string in;
 	while (true){
-		cout << "Выберете метод сжатия:\n1.Метод Хаффмана\n2.Метод Шеннона-Фано\n3.Выход\n";
+		cout << "Р’С‹Р±РµСЂРµС‚Рµ РјРµС‚РѕРґ СЃР¶Р°С‚РёСЏ:\n1.РњРµС‚РѕРґ РҐР°С„С„РјР°РЅР°\n2.РњРµС‚РѕРґ РЁРµРЅРЅРѕРЅР°-Р¤Р°РЅРѕ\n3.Р’С‹С…РѕРґ\n";
 		getline(cin, in);
 		if (in.compare("1") == 0){
-			cout << sHuffman << endl << "Введите строку :" << endl;
+			cout << sHuffman << endl << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ :" << endl;
 			flag = true;
 		}
 		else if (in.compare("2") == 0){
-			cout << sShannon << endl << "Введите строку :" << endl;
+			cout << sShannon << endl << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ :" << endl;
 			flag = false;
 		}
 		else if (in.compare("3") == 0){
@@ -28,24 +28,24 @@ int main(void)
 			return 0;
 		}
 		else{
-			cout << "Ошибка, такого пункта меню не существует!" << endl;
+			cout << "РћС€РёР±РєР°, С‚Р°РєРѕРіРѕ РїСѓРЅРєС‚Р° РјРµРЅСЋ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!" << endl;
 			continue;
 		}
 		string input_str("");
-		// Ввод строки
+		// Р’РІРѕРґ СЃС‚СЂРѕРєРё
 		getline(cin, input_str);
 		char  *str = &input_str[0];
 		OemToCharA(str, str);
 		if (flag){
-			// Создание дерева 
+			// РЎРѕР·РґР°РЅРёРµ РґРµСЂРµРІР° 
 			htTree *codeTree = buildTree(str);
-			// Создание таблицы символов
+			// РЎРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃРёРјРІРѕР»РѕРІ
 			hlTable *codeTable = buildTable(codeTree);
-			// Печать таблицы 
+			// РџРµС‡Р°С‚СЊ С‚Р°Р±Р»РёС†С‹ 
 			printTable(codeTable);
-			// Кодирование 
+			// РљРѕРґРёСЂРѕРІР°РЅРёРµ 
 			string code = encode(codeTable, str);
-			//Декодирование
+			//Р”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ
 			decode(codeTree, code.c_str());
 		}
 		else

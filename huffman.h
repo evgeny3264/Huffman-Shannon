@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #ifndef _HUFFMAN_H
 #define _HUFFMAN_H
 #include <iostream>

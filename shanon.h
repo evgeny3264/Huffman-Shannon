@@ -1,4 +1,4 @@
-#include "huffman.h"
+﻿#include "huffman.h"
 hlTable * _buildTable(char *inputString);
 int * init(int * arr);
 void getCode(hlTable *table, int max_len);

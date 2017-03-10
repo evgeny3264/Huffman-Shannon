@@ -1,4 +1,4 @@
-#include <stdlib.h>
+п»ї#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "huffman.h"
@@ -46,16 +46,16 @@ void traverseTree(htNode *treeNode, hlTable **table, int k, char code[256])
 
 hlTable * buildTable(htTree * huffmanTree)
 {
-	//Инициализировать таблицу 
+	//РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ С‚Р°Р±Р»РёС†Сѓ 
 	hlTable *table = (hlTable *)malloc(sizeof(hlTable));
 	table->first = NULL;
 	table->last = NULL;
 	
 	char code[256];
-	//уровень обхода дерева
+	//СѓСЂРѕРІРµРЅСЊ РѕР±С…РѕРґР° РґРµСЂРµРІР°
 	int k=0;
 
-	//Обойти дерево и вычислить коды
+	//РћР±РѕР№С‚Рё РґРµСЂРµРІРѕ Рё РІС‹С‡РёСЃР»РёС‚СЊ РєРѕРґС‹
 	traverseTree(huffmanTree->root,&table,k,code);
 	return table;
 }
@@ -63,22 +63,22 @@ hlTable * buildTable(htTree * huffmanTree)
 htTree * buildTree(char *inputString)
 {
 	int lStr=strlen(inputString);
-	// Создать массив размер 256(ANSII 256)
+	// РЎРѕР·РґР°С‚СЊ РјР°СЃСЃРёРІ СЂР°Р·РјРµСЂ 256(ANSII 256)
 	int * probability = (int *)malloc(sizeof(int)*256);
 	
-	//Инициализацировать массив
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЂРѕРІР°С‚СЊ РјР°СЃСЃРёРІ
 	for(int i=0; i<256; i++)
 		probability[i]=0;
 
-	//Индекс массива в соотвестие символу
+	//РРЅРґРµРєСЃ РјР°СЃСЃРёРІР° РІ СЃРѕРѕС‚РІРµСЃС‚РёРµ СЃРёРјРІРѕР»Сѓ
 	for(int i=0; inputString[i]!='\0'; i++)
 		probability[(unsigned char) inputString[i]]++;
 
-	//Объявить очередь и выделить память 
+	//РћР±СЉСЏРІРёС‚СЊ РѕС‡РµСЂРµРґСЊ Рё РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ 
 	pQueue * huffmanQueue;
 	initPQueue(&huffmanQueue);
 
-	//Создать узел в очереди
+	//РЎРѕР·РґР°С‚СЊ СѓР·РµР» РІ РѕС‡РµСЂРµРґРё
 	for(int i=0; i<256; i++)
 		if(probability[i]!=0)
 		{
@@ -90,10 +90,10 @@ htTree * buildTree(char *inputString)
 			addPQueue(&huffmanQueue,aux,probability[i]);
 		}
 
-	//Освободить память
+	//РћСЃРІРѕР±РѕРґРёС‚СЊ РїР°РјСЏС‚СЊ
 	free(probability);
 
-	//Построить дерево
+	//РџРѕСЃС‚СЂРѕРёС‚СЊ РґРµСЂРµРІРѕ
 	while(huffmanQueue->size!=1)
 	{
 		int priority=huffmanQueue->first->priority;
@@ -121,7 +121,7 @@ string encode(hlTable *table, char *stringToEncode)
 {
 	hlNode *traversal;
 	
-	printf("\nКодирование\nВходящая строка : %s\nРезультат : \n",stringToEncode);
+	printf("\nРљРѕРґРёСЂРѕРІР°РЅРёРµ\nР’С…РѕРґСЏС‰Р°СЏ СЃС‚СЂРѕРєР° : %s\nР РµР·СѓР»СЊС‚Р°С‚ : \n",stringToEncode);
 
 	string temp="";
 	for(int i=0; stringToEncode[i]!='\0'; i++)
@@ -140,7 +140,7 @@ string encode(hlTable *table, char *stringToEncode)
 void decode(htTree *tree,const char *stringToDecode)
 {
 	htNode *traversal = tree->root;
-	printf("\nДекодирование\nВходящая строка: %s\nРезультат : \n",stringToDecode);
+	printf("\nР”РµРєРѕРґРёСЂРѕРІР°РЅРёРµ\nР’С…РѕРґСЏС‰Р°СЏ СЃС‚СЂРѕРєР°: %s\nР РµР·СѓР»СЊС‚Р°С‚ : \n",stringToDecode);
 		
 	for(int i=0; stringToDecode[i]!='\0'; i++)
 	{
@@ -158,7 +158,7 @@ void decode(htTree *tree,const char *stringToDecode)
 
 		if(stringToDecode[i]!='0'&&stringToDecode[i]!='1')
 		{
-			printf("Входящая строка некорректна!\n");
+			printf("Р’С…РѕРґСЏС‰Р°СЏ СЃС‚СЂРѕРєР° РЅРµРєРѕСЂСЂРµРєС‚РЅР°!\n");
 			return;
 		}
 	}
@@ -175,7 +175,7 @@ void decode(htTree *tree,const char *stringToDecode)
 void printTable(hlTable * hlT)
 {
 	hlNode* cur=hlT->first;
-	printf("\nCимвол\tКод\tВероятность\tЭнтропия");
+	printf("\nCРёРјРІРѕР»\tРљРѕРґ\tР’РµСЂРѕСЏС‚РЅРѕСЃС‚СЊ\tР­РЅС‚СЂРѕРїРёСЏ");
 	while(cur!=NULL)
 	{
 		double probability=cur->probability;

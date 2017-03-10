@@ -1,4 +1,4 @@
-#include "pQueue.h"
+ï»¿#include "pQueue.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -13,7 +13,7 @@ void addPQueue(pQueue **queue, TYPE val, unsigned int priority)
 {
 	if((*queue)->size == MAX_SZ)
 	{
-		printf("\nÎ÷åðåäü çàïîëíåíà.\n");
+		printf("\nÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð°.\n");
 		return;
 	}
 
@@ -21,7 +21,7 @@ void addPQueue(pQueue **queue, TYPE val, unsigned int priority)
 	aux->priority = priority;
 	aux->val = val;
 
-	//Åñëè î÷åðåäü ïóñòàÿ
+	//Ð•ÑÐ»Ð¸ Ð¾Ñ‡ÐµÑ€ÐµÐ´ÑŒ Ð¿ÑƒÑÑ‚Ð°Ñ
 	if((*queue)->size == 0 || (*queue)->first == NULL)
 	{
 		aux->next = NULL;
