@@ -1,1 +1,1 @@
-﻿Реализация алгоритмов сжатия данных Huffman coding, Shannon coding.
+Implementation of data compression algorithms Huffman coding, Shannon coding.
